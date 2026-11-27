@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Runtime database and caches (created on first run; never commit)
+*.db
+*.db-shm
+*.db-wal
+
+# Local config / virtualenv
+.env
+.venv/
+venv/
+
+# OS
+.DS_Store

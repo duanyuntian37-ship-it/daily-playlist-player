@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>每日歌单 · Daily Playlist Player</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-style="cn-pop">
+<header class="topbar">
+  <div>
+    <h1>每日歌单</h1>
+    <p id="todayLine">正在加载今日推荐…</p>
+  </div>
+  <button id="landscapeBtn" type="button">横屏模式</button>
+</header>
+
+<main id="player">
+  <section class="stage">
+    <div class="turntable" id="turntable">
+      <div class="disc" id="disc">
+        <div class="label" id="discLabel">♪</div>
+      </div>
+      <div class="tonearm" id="tonearm" aria-hidden="true">
+        <span class="pivot"></span><span class="arm"></span><span class="head"></span>
+      </div>
+      <div class="spindle"></div>
+    </div>
+    <div class="song-meta">
+      <img id="cover" alt="封面" hidden>
+      <h2 id="songTitle">—</h2>
+      <p id="songArtist">—</p>
+      <p id="songStyle">—</p>
+    </div>
+  </section>
+
+  <section class="controls">
+    <div class="source-row">
+      <span class="row-label">音源</span>
+      <div class="source-switch" id="sourceSwitch">
+        <button type="button" data-source="auto" class="active">自动</button>
+        <button type="button" data-source="bilibili">哔哩哔哩</button>
+        <button type="button" data-source="youtube">YouTube</button>
+      </div>
+      <label class="companion" id="companionWrap" hidden>
+        <input type="checkbox" id="companionToggle"> 伴随声音
+      </label>
+    </div>
+    <div class="transport">
+      <button id="prevBtn" type="button" aria-label="上一首">⏮</button>
+      <button id="playBtn" type="button" aria-label="播放/暂停">▶</button>
+      <button id="nextBtn" type="button" aria-label="下一首">⏭</button>
+      <button id="likeBtn" type="button" aria-label="心选">♡</button>
+    </div>
+    <div class="progress-row">
+      <span id="curTime">0:00</span>
+      <input type="range" id="seek" min="0" max="1000" value="0" step="1" aria-label="进度">
+      <span id="durTime">0:00</span>
+    </div>
+    <p id="statusLine" class="status"></p>
+    <div id="ytBox" class="yt-box" hidden></div>
+    <p id="ytHint" class="hint" hidden>点视频左下角的播放键开始播放；如果没有声音，打开上方「伴随声音」，声音走本页音频通道。</p>
+  </section>
+
+  <section class="lyrics">
+    <h3>歌词</h3>
+    <p id="lyricsNote" class="hint"></p>
+    <ol id="lyricsList"></ol>
+    <p id="noLyrics" class="hint" hidden>暂无歌词</p>
+  </section>
+
+  <section class="library">
+    <h3>完整歌单</h3>
+    <input id="search" type="search" placeholder="搜索歌名或歌手…">
+    <div class="tabs">
+      <button type="button" data-tab="all" class="active">全部</button>
+      <button type="button" data-tab="liked">心选歌单</button>
+    </div>
+    <ul id="songList"></ul>
+  </section>
+</main>
+
+<audio id="audio" preload="metadata"></audio>
+<script src="app.js"></script>
+</body>
+</html>
